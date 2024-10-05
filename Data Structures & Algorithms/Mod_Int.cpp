@@ -73,6 +73,21 @@ template<int Mod = mod> struct Mint{
     val = (val + M) % M;
     return *this;
   } 
+  bool operator==(Mint rhs){
+    return (val == rhs.val);
+  }
+  bool operator<(Mint rhs){
+    return (val < rhs.val);
+  }
+  bool operator<=(Mint rhs){
+    return (val <= rhs.val);
+  }
+  bool operator>(Mint rhs){
+    return (val > rhs.val);
+  }
+  bool operator>=(Mint rhs){
+    return (val >= rhs.val);
+  }
 };
 int Mxm = 1000005;
 vector<Mint<mod>>fact(Mxm), inv(Mxm);
