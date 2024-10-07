@@ -2,8 +2,8 @@
 using namespace std;
 #define int long long
 const int Mxn = 200005, mod = 1000000007;
-template<int Mod = mod> struct Mod_int{
-  int val = 0;
+template<int Mod = mod, typename T = int> struct Mod_int{
+  T val = 0;
   friend istream &operator>>(istream &is, Mod_int &x){
     is >> x.val;
     x.val = (x.val + Mod) % Mod;
@@ -13,7 +13,7 @@ template<int Mod = mod> struct Mod_int{
     return os << x.val;
   }
   Mod_int(){};
-  Mod_int(int _val){
+  Mod_int(T _val){
     val = (_val + Mod) % Mod;
   }
   Mod_int operator+(Mod_int rhs){
@@ -24,7 +24,7 @@ template<int Mod = mod> struct Mod_int{
     ret.val = (val + M) % M;
     return ret;
   }
-  Mod_int& operator=(int x){
+  Mod_int& operator=(T x){
     val = (x + Mod) % Mod;
     return *this;
   }
@@ -33,13 +33,13 @@ template<int Mod = mod> struct Mod_int{
     return *this;
   }
   Mod_int operator-(Mod_int rhs){
-    int ret = val - rhs.val + Mod;
+    T ret = val - rhs.val + Mod;
     return Mod_int(ret % Mod);
   }
   Mod_int operator*(Mod_int rhs){
     return Mod_int((val * rhs.val) % Mod);
   }
-  friend Mod_int power(Mod_int a, int b){
+  friend Mod_int power(Mod_int a, T b){
     if(b == 0)return Mod_int(1);
     Mod_int res = power(a, b / 2);
     res = res * res;
@@ -90,7 +90,7 @@ template<int Mod = mod> struct Mod_int{
   }
 };
 int Mxm = 1000005;
-using Mint = Mod_int<mod>;
+using Mint = Mod_int<mod, int>;
 vector<Mint>fact(Mxm), inv(Mxm);
 void preproccess(){
   fact[0] = fact[1] = 1;
@@ -102,9 +102,13 @@ void preproccess(){
     inv[i] = inv[i + 1] * Mod_int(i + 1);
   }
 }
-Mod_int<mod> nCr(int a, int b){
-  if(b > a)return 0;
-  return fact[a] * inv[a - b] * inv[b]; 
+Mod_int<mod, int> nCr(int N, int R){
+  if(R > N)return 0;
+  return fact[N] * inv[N - R] * inv[R]; 
+}
+Mod_int<mod, int> nPr(int N, int R){
+  if(R > N)return 0;
+  return fact[N] * inv[N - R];
 }
 signed main(){
   return 0;
