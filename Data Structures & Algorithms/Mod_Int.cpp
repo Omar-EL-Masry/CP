@@ -103,11 +103,11 @@ void preproccess(){
   }
 }
 Mod_int<mod, int> nCr(int N, int R){
-  if(R > N)return 0;
+  if(R > N || N < 0 || R < 0)return 0;
   return fact[N] * inv[N - R] * inv[R]; 
 }
 Mod_int<mod, int> nPr(int N, int R){
-  if(R > N)return 0;
+  if(R > N || N < 0 || R < 0)return 0;
   return fact[N] * inv[N - R];
 }
 signed main(){
