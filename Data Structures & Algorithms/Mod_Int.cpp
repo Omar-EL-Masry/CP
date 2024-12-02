@@ -89,8 +89,8 @@ template<int Mod = mod, typename T = int> struct Mod_int{
     return (val >= rhs.val);
   }
 };
-int Mxm = 1000005;
 using Mint = Mod_int<mod, int>;
+int Mxm = 1000005;
 vector<Mint>fact(Mxm), inv(Mxm);
 void preproccess(){
   fact[0] = fact[1] = 1;
