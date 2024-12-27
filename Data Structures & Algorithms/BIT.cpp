@@ -12,15 +12,11 @@ template<typename T> struct BIT{
     return (x & -x);
   }
   void update(int idx, T x){
-    for(;idx < sz;idx += lsb(idx)){
-      tree[idx] += x;
-    }
+    for(;idx < sz;idx += lsb(idx))tree[idx] += x;
   }
   T get(int idx){
     T sum = 0;
-    for(;idx;idx -= lsb(idx)){
-      sum += tree[idx];
-    }
+    for(;idx;idx -= lsb(idx))sum += tree[idx];
     return sum;
   }
   T get(int l, int r){
