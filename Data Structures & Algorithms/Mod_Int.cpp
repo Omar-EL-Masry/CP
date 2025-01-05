@@ -19,11 +19,6 @@ template<int Mod = mod, typename T = int> struct Mod_int{
   Mod_int operator+(Mod_int rhs){
     return Mod_int((this -> val + rhs.val) % Mod);
   }
-  Mod_int operator%(int M){
-    Mod_int ret;
-    ret.val = (val + M) % M;
-    return ret;
-  }
   Mod_int& operator=(T x){
     val = (x + Mod) % Mod;
     return *this;
@@ -69,10 +64,6 @@ template<int Mod = mod, typename T = int> struct Mod_int{
   Mod_int &operator/=(Mod_int rhs){
     return *this = *this / rhs;
   }
-  Mod_int &operator%=(int M){
-    val = (val + M) % M;
-    return *this;
-  } 
   bool operator==(Mod_int rhs){
     return (val == rhs.val);
   }
