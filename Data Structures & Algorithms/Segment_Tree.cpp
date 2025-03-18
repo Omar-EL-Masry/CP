@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 template<typename T>
 struct Segment_Tree{
   int sz = 1, N;
@@ -38,6 +36,3 @@ struct Segment_Tree{
   #undef left
   #undef right
 };
-int main(){
-  return 0;
-}
