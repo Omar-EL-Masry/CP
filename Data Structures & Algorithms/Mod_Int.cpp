@@ -1,7 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define int long long
-const int Mxn = 200005, mod = 1000000007;
 template <int Mod = mod, typename T = int>
 struct Mod_int
 {
@@ -80,7 +76,4 @@ Mod_int<mod, int> nPr(int N, int R)
 	if (R > N || N < 0 || R < 0)
 		return 0;
 	return fact[N] * inv[N - R];
-}
-signed main(){
-  return 0;
 }
