@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 struct LCA{
   vector<vector<int>>anc, adj;
   vector<int>depth;
@@ -51,6 +49,3 @@ struct LCA{
     return depth[u] + depth[v] - 2 * depth[lca];
   }
 };
-int main(){
-  return 0;
-} 
