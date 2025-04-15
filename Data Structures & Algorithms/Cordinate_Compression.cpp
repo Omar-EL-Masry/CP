@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 struct Cordinate_Compression{
         set<int>vals;
         map<int, int>val_to_cord, cord_to_val;
@@ -18,7 +16,3 @@ struct Cordinate_Compression{
                 return cord_to_val[idx];
         }
 };
-int main()
-{
-        return 0;
-}
