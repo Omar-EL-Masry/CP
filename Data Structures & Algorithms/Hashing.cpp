@@ -119,13 +119,13 @@ struct Hasher
 	string s;
 	int N;
 	using Mint = Mod_int<mod, T>;
-	vector<Mint> prefix, pw, revprefix;
+	vector<Mint> prefix, pw, revsuffix;
 	Hasher(string _s)
 	{
 		N = _s.size();
 		prefix.resize(N + 2);
 		pw.resize(N + 2);
-		revprefix.resize(N + 2);
+		revsuffix.resize(N + 2);
 		s = _s;
 		init();
 	}
@@ -133,7 +133,7 @@ struct Hasher
 		N = _s.size();
 		prefix.resize(N + 2);
 		pw.resize(N + 2);
-		revprefix.resize(N + 2);
+		revsuffix.resize(N + 2);
 		s = _s;
 		init();
 	}
@@ -147,10 +147,10 @@ struct Hasher
 			pw[i] = pw[i - 1] * Mint(Base);
 			prefix[i] = (prefix[i - 1] * Base) + s[i];
 		}
-		revprefix[N - 1] = s[N - 1];
+		revsuffix[N - 1] = s[N - 1];
 		for (int i = N - 2; i >= 0; i--)
 		{
-			revprefix[i] = revprefix[i + 1] * Base + s[i];
+			revsuffix[i] = revsuffix[i + 1] * Base + s[i];
 		}
 	}
 	Mint hash_prefix(int l, int r)
@@ -162,9 +162,9 @@ struct Hasher
 	}
 	Mint reverse_hash(int l, int r)
 	{
-		Mint ret = revprefix[l];
+		Mint ret = revsuffix[l];
 		if (r < N)
-			ret -= (revprefix[r + 1] * pw[r - l + 1]);
+			ret -= (revsuffix[r + 1] * pw[r - l + 1]);
 		return ret;
 	}
 };
